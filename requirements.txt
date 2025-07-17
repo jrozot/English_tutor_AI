@@ -1,3 +1,4 @@
-happytransformer
+deep-translator
+language-tool
 torch
 transformers

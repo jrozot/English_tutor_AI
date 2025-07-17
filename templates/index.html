@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>AI English Grammar Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap & Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+
+        .container {
+            max-width: 700px;
+            margin-top: 60px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+        }
+
+        .card-header {
+            background-color: #0d6efd;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .btn-primary {
+            background-color: #0d6efd;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+
+        .result-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 5px solid #0d6efd;
+        }
+
+        #loader {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            Corrector de Inglés con IA
+        </div>
+        <div class="card-body">
+            <form id="grammar-form">
+                <div class="mb-3">
+                    <label for="text-input" class="form-label">Escribe tu frase en inglés:</label>
+                    <textarea class="form-control" id="text-input" name="user_text" rows="4" required></textarea>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Corregir</button>
+                </div>
+            </form>
+
+            <!-- Loading Spinner -->
+            <div id="loader" class="text-center mt-3">
+                <div class="spinner-border text-primary" role="status"></div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="result-section" class="result-section" style="display: none;">
+                <h5>Texto corregido:</h5>
+                <p id="corrected-text"></p>
+
+                <h5>Traducción:</h5>
+                <p id="translation"></p>
+
+                <h5>Retroalimentación:</h5>
+                <p id="feedback"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

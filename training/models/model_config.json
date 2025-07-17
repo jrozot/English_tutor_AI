@@ -1,0 +1,59 @@
+{
+  "model_name": "transformer_grammar_corrector_v1",
+  "architecture": "TransformerEncoder",
+  "description": "A Transformer-based model fine-tuned for grammatical error correction in English sentences.",
+  "vocab_size": 32000,
+  "max_position_embeddings": 128,
+  "num_layers": 6,
+  "num_attention_heads": 8,
+  "hidden_size": 512,
+  "intermediate_size": 2048,
+  "activation_function": "gelu",
+  "dropout_rate": 0.1,
+  "attention_dropout_rate": 0.1,
+  "initializer_range": 0.02,
+  "layer_norm_epsilon": 1e-12,
+  "pad_token_id": 0,
+  "bos_token_id": 101,
+  "eos_token_id": 102,
+  "training": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "lr_scheduler_type": "linear",
+    "weight_decay": 0.01,
+    "warmup_steps": 500,
+    "batch_size": 32,
+    "num_epochs": 3,
+    "gradient_clipping": 1.0,
+    "max_seq_length": 64,
+    "early_stopping": true,
+    "patience": 2
+  },
+  "tokenizer": {
+    "type": "BytePairEncoding",
+    "lowercase": true,
+    "strip_accents": true,
+    "add_prefix_space": false
+  },
+  "pretraining": {
+    "source": "openai/language-tool-corpus (simulated)",
+    "objective": "sequence-to-sequence correction",
+    "training_split": 0.9,
+    "validation_split": 0.1,
+    "augmentation": {
+      "random_insert": true,
+      "swap_errors": true,
+      "synthetic_typos": true
+    }
+  },
+  "output": {
+    "use_softmax": true,
+    "output_layer_type": "linear",
+    "loss_function": "CrossEntropyLoss"
+  },
+  "compatibility": {
+    "framework": "PyTorch",
+    "transformers_version": "4.39.3",
+    "python_version": "3.10"
+  }
+}
