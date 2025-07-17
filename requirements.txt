@@ -1,4 +1,22 @@
-deep-translator
-language-tool
-torch
-transformers
+Flask==2.3.3
+language-tool-python==2.7.1
+deep-translator==1.11.4
+gunicorn==21.2.0
+
+# Optional but recommended for development
+python-dotenv==1.0.1
+
+# Testing
+pytest==8.2.1
+pytest-mock==3.14.0
+
+# Web scraping, NLP preprocessing (optional)
+beautifulsoup4==4.12.3
+nltk==3.8.1
+
+# For training simulation (if needed)
+transformers==4.41.2
+torch==2.3.0
+pandas==2.2.2
+scikit-learn==1.5.0
+tqdm==4.66.4
